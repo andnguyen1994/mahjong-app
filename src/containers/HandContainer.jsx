@@ -12,14 +12,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    playTile: (index, hand) => dispatch(playTile('PLAYED_TILE', index, hand))
+    playTile: (suit, value) => dispatch(playTile('PLAYED_TILE', suit, value))
   }
 }
 
 class SelfHandContainer extends Component {
-  handleDblClick = index => e => {
+  handleDblClick = (suit, value) => e => {
     e.preventDefault()
-    this.props.playTile(index, this.props.hand[0])
+    this.props.playTile(suit, value)
   }
 
   render () {

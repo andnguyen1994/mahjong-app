@@ -6,11 +6,11 @@ const ActionCenter = styled.div`
 `
 
 const GameActions = props => {
-  const { draw, checkMahjong } = props
+  const { draw, pung, checkMahjong } = props
   return (
     <ActionCenter>
       <button onClick={draw}>draw</button>
-      <button>pung</button>
+      <button onClick={pung}>pung</button>
       <button>chow</button>
       <button>kong</button>
       <button onClick={checkMahjong}>mahjong!</button>

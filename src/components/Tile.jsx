@@ -15,13 +15,13 @@ const Tile = props => {
   const Element = () => {
     switch (suit) {
       case 0:
-        return <Circles value={value} />
-      case 1:
         return <Sticks value={value} />
-      case 2:
+      case 1:
         return <Symbols value={value} />
-      default:
-        return <Honor suit={suit} />
+      case 2:
+        return <Circles value={value} />
+      case 3:
+        return <Honor value={value} />
     }
   }
 

@@ -1,5 +1,5 @@
 {
-  "name": "mahjong",
+  "name": "mahjong-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,6 +8,7 @@
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.5",
     "redux": "^4.0.0",
+    "socket.io-client": "^2.1.1",
     "styled-components": "^3.4.5"
   },
   "scripts": {
@@ -15,5 +16,8 @@
     "build": "NODE_PATH=src/ react-scripts build",
     "test": "NODE_PATH=src/ react-scripts test --env=jsdom",
     "eject": "NODE_PATH=src/ react-scripts eject"
-  }
+  },
+  "main": "index.js",
+  "repository": "git@github.com:andnguyen1994/mahjong-app.git",
+  "author": "andnguyen1994 <andnguyen1994@gmail.com>"
 }

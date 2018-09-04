@@ -8,29 +8,28 @@ const HonorTile = styled.div`
 `
 // TOOD: color the dragons properly
 const Honor = props => {
-  const suit = props.suit
+  const value = props.value
   let display = ''
-  console.log(suit)
-  switch (suit) {
-    case 3:
+  switch (value) {
+    case 1:
       display = 'Red'
       break
-    case 4:
+    case 2:
       display = 'Green'
       break
-    case 5:
+    case 3:
       display = 'White'
       break
-    case 6:
+    case 4:
       display = 'North'
       break
-    case 7:
+    case 5:
       display = 'East'
       break
-    case 8:
+    case 6:
       display = 'South'
       break
-    case 9:
+    case 7:
       display = 'West'
       break
     default:

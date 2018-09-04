@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getTile } from 'actions/index'
 import GameActions from 'components/GameActions'
 import { mahjong } from 'scripts/mahjong'
+import { test } from 'API/api'
 
 const mapStateToProps = state => {
   return {
@@ -14,7 +15,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getTile: (board, hand) => dispatch(getTile('DRAW', board, hand))
+    getTile: (type, source) => dispatch(getTile(type, source))
   }
 }
 
@@ -26,10 +27,11 @@ class GameActionContainer extends Component {
 
   handleDraw = e => {
     e.preventDefault()
-    if (this.props.hand[0].length >= 14) {
+    let sum = this.props.hand[0].reduce((a, b) => a + b, 0)
+    if (sum >= 14) {
       console.log('your hand is full!')
     } else {
-      this.props.getTile(this.props.board, this.props.hand[0])
+      this.props.getTile('DRAW', this.props.board)
     }
   }
 
@@ -42,11 +44,31 @@ class GameActionContainer extends Component {
     }
   }
 
+  handlePung = e => {
+    e.preventDefault()
+    let mostRecentTile = this.props.playedTiles[
+      this.props.playedTiles.length - 1
+    ]
+    if (
+      this.props.hand[0][mostRecentTile.suit * 9 - 1 + mostRecentTile.value] ===
+      2
+    ) {
+      this.props.getTile('PUNG', this.props.playedTiles)
+    } else {
+      console.log()
+    }
+    test()
+  }
+
   setHand = e => {}
 
   render () {
     return (
-      <GameActions draw={this.handleDraw} checkMahjong={this.handleMahjong} />
+      <GameActions
+        draw={this.handleDraw}
+        pung={this.handlePung}
+        checkMahjong={this.handleMahjong}
+      />
     )
   }
 }

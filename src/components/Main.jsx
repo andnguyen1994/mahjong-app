@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import createBoard from 'BaseGame'
+import createBoard, { emptyHand } from 'BaseGame'
 import shuffle from 'scripts/randomizer'
 import Board from 'containers/BoardContainer'
 import Hand from 'containers/HandContainer'
@@ -39,9 +39,10 @@ class Table extends Component {
     let hand = []
     let board = initialBoard
     for (let p = 0; p < 4; p++) {
-      hand = []
+      hand = Array(34).fill(0)
       for (let i = 0; i < 13; i++) {
-        deal(board, hand)
+        let tile = deal(board)
+        hand[tile.suit * 9 - 1 + tile.value]++
       }
       players.push(hand)
     }
